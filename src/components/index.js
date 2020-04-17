@@ -1,0 +1,1 @@
+export { default as App } from './molecules/app/app.jsx';
