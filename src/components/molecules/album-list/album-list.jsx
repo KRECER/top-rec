@@ -12,6 +12,7 @@ import makeStyles from "@material-ui/core/styles/makeStyles";
 import {ReactSVG} from "react-svg";
 import iconLike from './icon-like.svg';
 import iconLikeChecked from './icon-like-checked.svg';
+import {AppSpinner} from "../../atoms/app-spinner/app-spinner";
 
 export const EnhancedReactSVG = styled(ReactSVG)`
 	display: flex;
@@ -131,7 +132,7 @@ const AlbumList = () => {
     ));
   };
 
-  return albums ? <AppTable columns={columns} renderRow={renderRow} /> : null;
+  return albums ? <AppTable columns={columns} renderRow={renderRow} /> : <AppSpinner size={100} color={'primary'} />;
 };
 
 export default AlbumList;

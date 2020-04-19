@@ -18,7 +18,7 @@ const transformAlbum = (it, idx) => ({
 });
 
 const getTopAlbumsCall = () => {
-  return api.get('https://itunes.apple.com/us/rss/topalbums/limit=10/json')
+  return api.get('https://itunes.apple.com/us/rss/topalbums/limit=100/json')
     .then((res) => {
       return res.data.feed.entry.map(transformAlbum);
     });
