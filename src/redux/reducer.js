@@ -21,24 +21,24 @@ const ActionCreators = {
     return {type: ActionTypes.GET_TOP_ALBUMS_SUCCESS, payload: albums};
   },
 
-  getTopAlbumsFail() {
-    return {type: ActionTypes.GET_TOP_ALBUMS_FAIL, payload: 'error'};
+  getTopAlbumsFail(e) {
+    return {type: ActionTypes.GET_TOP_ALBUMS_FAIL, payload: e};
   },
 
 };
 
 const Operation = {
 
-  fetchTopAlbums: () => async (dispatch) => {
+  fetchTopAlbums: () => (dispatch) => {
     dispatch(ActionCreators.getTopAlbumsRequest());
 
-    try {
-      const res = await getTopAlbumsCall();
-      dispatch(ActionCreators.getTopAlbumsSuccess(res));
-    } catch(e) {
-      dispatch(ActionCreators.getTopAlbumsFail());
-    }
-
+    getTopAlbumsCall()
+      .then((res) => {
+        dispatch(ActionCreators.getTopAlbumsSuccess(res));
+      })
+      .catch((e) => {
+        dispatch(ActionCreators.getTopAlbumsFail(e));
+      });
   },
 
 };

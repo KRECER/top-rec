@@ -1,7 +1,8 @@
 import React from 'react';
+import { DonationForm } from "../../components";
 
 const DonationPage = () => {
-  return <div>Donation Page</div>;
+  return <DonationForm />;
 };
 
 export default DonationPage;

@@ -1,13 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TableContainer from '@material-ui/core/TableContainer';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import Paper from '@material-ui/core/Paper';
 import SimpleBar from 'simplebar-react';
 import 'simplebar/dist/simplebar.css';
 
@@ -29,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor:  '#E1E9EC'
   },
   simpleBar: {
-    maxHeight: '700px',
-  }
+    maxHeight: '500px',
+  },
 }));
 
 const AppTable = (props) => {
@@ -52,7 +50,7 @@ const AppTable = (props) => {
 
     return (
       <SimpleBar className={classes.simpleBar}>
-        <Table stickyHeader size="large">
+        <Table stickyHeader className={classes.table}>
           <TableHead className={classes.head}>
             <TableRow classes={{ root: classes.root }}>
               {renderColumns()}

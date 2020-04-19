@@ -13,11 +13,15 @@ const transformAlbum = (it, idx) => ({
   genre: it.category.attributes.label,
   price: it['im:price'].label,
   releaseDate: it['im:releaseDate'].attributes.label,
+  albumLink: it.link.attributes.href,
+  genreLink: it.category.attributes.scheme,
 });
 
-const getTopAlbumsCall = async () => {
-  const res = await api.get('https://itunes.apple.com/us/rss/topalbums/limit=100/json');
-  return res.data.feed.entry.map(transformAlbum);
+const getTopAlbumsCall = () => {
+  return api.get('https://itunes.apple.com/us/rss/topalbums/limit=10/json')
+    .then((res) => {
+      return res.data.feed.entry.map(transformAlbum);
+    });
 };
 
 

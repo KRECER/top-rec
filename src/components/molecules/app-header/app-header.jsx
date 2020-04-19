@@ -1,9 +1,10 @@
 import React from 'react';
-import {AppBar, Tabs, Tab, makeStyles} from '@material-ui/core';
+import {AppBar, makeStyles} from '@material-ui/core';
 
 import logo from './logo.svg';
 import MainNav from '../main-nav/main-nav.jsx';
 import {IconDonation, IconSurface} from "../../atoms/app-icon/app-icon.jsx";
+import { AppSearch } from "../../index";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -46,6 +47,7 @@ const AppHeader = () => {
       <AppBar className={classes.container} position="sticky">
         <img src={logo} className={classes.logo} alt="logo" />
         <MainNav pages={pages} />
+        <AppSearch />
       </AppBar>
     </div>
   );
