@@ -1,6 +1,11 @@
 import React from 'react';
-import { FormControl, OutlinedInput, InputAdornment, makeStyles } from '@material-ui/core';
-import {EnhancedReactSVG} from "../../styled-components";
+
+import FormControl from '@material-ui/core/FormControl';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
+import { EnhancedReactSVG } from "@/components/styled-components/";
 import searchIcon from './icon-search.svg';
 
 const useStyles = makeStyles((theme) => ({
@@ -13,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
       borderColor: theme.palette.primary.main,
     },
   },
+  input: {
+    padding: '15px 30px',
+  },
   notched: {
     borderColor: theme.palette.primary.main,
     borderWidth: 2,
@@ -23,15 +31,14 @@ const useStyles = makeStyles((theme) => ({
   }
 
 }));
+
 const AppSearch = () => {
   const classes = useStyles();
+
   return (
     <FormControl variant="outlined" className={classes.formControl}>
       <OutlinedInput
-        classes={{
-          root: classes.root,
-          notchedOutline: classes.notched,
-        }}
+        classes={{root: classes.root, notchedOutline: classes.notched, input: classes.input}}
         endAdornment={(
           <InputAdornment position="end">
             <EnhancedReactSVG src={searchIcon} />
@@ -40,6 +47,7 @@ const AppSearch = () => {
       />
     </FormControl>
   );
+
 };
 
 export default AppSearch;

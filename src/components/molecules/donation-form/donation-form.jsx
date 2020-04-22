@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import Typography from '@material-ui/core/Typography';
-import {makeStyles} from "@material-ui/core/styles";
-import {Column, EnhancedButton, EnhancedReactSVG, FlexBlock, Row} from "../../styled-components";
-import {AppInput} from "../../atoms/app-input/app-input";
 import NumberFormat from 'react-number-format';
-import Button from "@material-ui/core/Button";
+
+import Typography from '@material-ui/core/Typography';
+import makeStyles from "@material-ui/core/styles/makeStyles";
+
+import { Column, EnhancedButton, EnhancedReactSVG, Row } from "@/components/styled-components/";
+
+import { AppInput } from '@/components/';
+
 import arrowRightIcon from './arrow-right.svg';
 
 const Wrapper = styled.div`
@@ -70,8 +73,8 @@ const DonationForm = () => {
   const classes = useStyles();
 
   const handleInputChange = (evt) => {
-    const val = parseInt(evt.target.value);
     const max = 1000;
+    const val = parseInt(evt.target.value);
     const newVal = Math.min(Math.max(val, 0), max);
     const percentage = Math.floor(newVal / max * 100);
     setAmount(newVal);

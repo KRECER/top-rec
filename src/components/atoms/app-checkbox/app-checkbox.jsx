@@ -1,21 +1,13 @@
 import React from 'react';
-import {Checkbox, FormControlLabel} from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { CheckBox, CheckBoxOutlineBlank} from './AppIcon';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+
+import { CheckBox, CheckBoxOutlineBlank} from '@/components/';
 
 const AppCheckbox = (props) => {
-  const {
-    label = '',
-    size = 'medium',
-    value,
-    color = 'secondary',
-    intermediate = false,
-    checked = false,
-    disabled = false,
-    icon = <CheckBoxOutlineBlank />,
-    checkedIcon = <CheckBox />,
-    changeHandler,
-  } = props;
+  const {label, size, value, color, intermediate, checked, disabled, icon, checkedIcon, changeHandler} = props;
+
   return (
     <>
       {label.length < 1 ? (
@@ -53,6 +45,7 @@ const AppCheckbox = (props) => {
     </>
   );
 };
+
 AppCheckbox.propTypes = {
   label: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium']),
@@ -69,8 +62,10 @@ AppCheckbox.propTypes = {
   checkedIcon: PropTypes.node,
   changeHandler: PropTypes.func,
 };
+
 AppCheckbox.defaultProps = {
   label: '',
+  color: 'secondary',
   size: 'medium',
   checked: false,
   intermediate: false,

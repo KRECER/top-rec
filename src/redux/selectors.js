@@ -1,5 +1,5 @@
 const getTopAlbums = (state) => {
-  return state.albums;
+  return state.albums.items;
 };
 
 export { getTopAlbums }

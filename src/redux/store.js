@@ -2,10 +2,10 @@ import { applyMiddleware, createStore, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
-import { reducer } from './reducer';
+import { rootReducer } from './reducers/';
 
 export const store = createStore(
-  reducer,
+  rootReducer,
   {},
   composeWithDevTools(compose(
     applyMiddleware(thunk, logger),
