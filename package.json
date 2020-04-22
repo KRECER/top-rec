@@ -2,6 +2,7 @@
   "name": "top-rec",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://krecer.github.io/top-rec",
   "dependencies": {
     "@babel/core": "7.9.0",
     "@material-ui/core": "^4.9.10",
@@ -75,7 +76,9 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "test": "node scripts/test.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -93,7 +96,6 @@
     ]
   },
   "devDependencies": {
-    "@svgr/webpack": "4.3.3",
     "redux-devtools-extension": "2.13.8",
     "redux-logger": "3.0.6"
   },

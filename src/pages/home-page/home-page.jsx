@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import styled from 'styled-components';
 
 import Grid from "@material-ui/core/Grid";
 
 import top100img from './top100.jpg';
 import { AlbumList } from "@/components/";
+import {getTopAlbums, getTopAlbumsPending} from "@/redux/selectors";
+import { Operations } from "@/redux/reducers/albums";
 
 const Image = styled.img`
   display:inline-block;
@@ -49,6 +52,15 @@ const WrapAlbumList = styled.div`
 `;
 
 const HomePage = () => {
+  const dispatch = useDispatch();
+  const albums = useSelector(getTopAlbums);
+  const pending = useSelector(getTopAlbumsPending);
+
+  useEffect(() => {
+    console.log('home page', 'component did mount');
+    dispatch(Operations.fetchTopAlbums());
+  }, [dispatch]);
+
   return <Section>
     <Grid container spacing={5}>
       <Grid item xs={12} md={4}>
@@ -58,7 +70,7 @@ const HomePage = () => {
         <Title>Top 100</Title>
         <SubTitle>iTunes Albums</SubTitle>
         <WrapAlbumList>
-          <AlbumList />
+          <AlbumList items={albums} isLoading={pending} />
         </WrapAlbumList>
       </Grid>
     </Grid>

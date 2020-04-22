@@ -1,5 +1,5 @@
 const initialState = {
-
+  'GET_TOP_ALBUMS': {pending: true},
 };
 
 const api = (state = initialState, action) => {
@@ -9,13 +9,13 @@ const api = (state = initialState, action) => {
 
   switch (requestStatus) {
     case 'REQUEST':
-      return {...state, [requestName]: {loaded: false, loading: true}};
+      return {...state, [requestName]: {pending: true}};
 
     case 'SUCCESS':
-      return {...state, [requestName]: {loaded: true, loading: false}};
+      return {...state, [requestName]: {pending: false}};
 
     case 'FAIL':
-      return {...state, [requestName]: {loaded: false, loading: false}};
+      return {...state, [requestName]: {pending: false}};
 
     default:
       return state;

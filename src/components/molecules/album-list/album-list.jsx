@@ -1,14 +1,10 @@
-import React, {useEffect} from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
 import styled from 'styled-components';
 
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import TableRow from "@material-ui/core/TableRow";
 import Checkbox from "@material-ui/core/Checkbox";
 import TableCell from "@material-ui/core/TableCell";
-
-import { getTopAlbums } from "@/redux/selectors";
-import { Operations } from "@/redux/reducers/albums";
 
 import iconLike from './icon-like.svg';
 import iconLikeChecked from './icon-like-checked.svg';
@@ -70,17 +66,12 @@ const Link = styled.a`
   }
 `;
 
-const AlbumList = () => {
-  const dispatch = useDispatch();
-  const albums = useSelector(getTopAlbums);
+const AlbumList = (props) => {
+  const { items, isLoading } = props;
   const classes = useStyles();
 
-  useEffect(() => {
-      dispatch(Operations.fetchTopAlbums());
-  }, [dispatch]);
-
   const renderRow = () => {
-    return albums.map((it) => (
+    return items.map((it) => (
       <TableRow key={it.id}>
         <CustomTableCell>
           <Link href={it.albumLink} target="_blank">
@@ -121,7 +112,7 @@ const AlbumList = () => {
     ));
   };
 
-  return albums ? <AppTable columns={columns} renderRow={renderRow} /> : <AppSpinner size={100} color={'primary'} />;
+  return isLoading ? <AppSpinner size={100} color={'primary'} /> : <AppTable columns={columns} renderRow={renderRow} />;
 };
 
 export default AlbumList;
