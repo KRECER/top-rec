@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import AppHeader from "../app-header/app-header";
-import {DonationPage, HomePage} from "../../../pages";
+import { AppHeader } from "@/components/";
+import { DonationPage, HomePage } from "@/pages";
 
 const App = () => {
   return <>

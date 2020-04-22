@@ -1,10 +1,13 @@
 import React from 'react';
-import {AppBar, makeStyles} from '@material-ui/core';
+
+import AppBar from '@material-ui/core/AppBar';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
+import { MainNav } from '@/components/';
+import {IconDonation, IconSurface} from "@/components/atoms/app-icon/app-icon.jsx";
+import { AppSearch } from "@/components/";
 
 import logo from './logo.svg';
-import MainNav from '../main-nav/main-nav.jsx';
-import {IconDonation, IconSurface} from "../../atoms/app-icon/app-icon.jsx";
-import { AppSearch } from "../../index";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {

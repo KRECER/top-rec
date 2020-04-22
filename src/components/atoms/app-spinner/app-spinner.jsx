@@ -1,7 +1,9 @@
 import React from 'react';
-import { CircularProgress, makeStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
+
+import CircularProgress from '@material-ui/core/CircularProgress';
+import makeStyles from '@material-ui/core/styles/makeStyles';
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -26,7 +28,7 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-export const AppSpinner = (props) => {
+const AppSpinner = (props) => {
   const { size, color, overlay = false } = props;
   const classes = useStyles();
   return (
@@ -51,3 +53,5 @@ AppSpinner.propTypes = {
 AppSpinner.defaultProps = {
   overlay: false,
 };
+
+export default AppSpinner;

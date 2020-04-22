@@ -1,7 +1,12 @@
 import React from 'react';
-import {FormControl, InputLabel, Input, FormHelperText, makeStyles} from '@material-ui/core';
-import NumberFormat from 'react-number-format';
 import PropTypes from 'prop-types';
+
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import NumberFormat from 'react-number-format';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,7 +39,7 @@ const getFormat = (mask) => {
   return format;
 };
 
-export const AppInput = (props) => {
+const AppInput = (props) => {
   const {name,
     value,
     label,
@@ -87,3 +92,5 @@ AppInput.defaultProps = {
   mask: 'none',
   className: null,
 };
+
+export default AppInput;

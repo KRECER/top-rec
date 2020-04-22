@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {NavLink, useLocation} from 'react-router-dom';
-import {makeStyles, Tab, Tabs} from "@material-ui/core";
+import { NavLink, useLocation } from 'react-router-dom';
+
+import makeStyles from '@material-ui/core/styles/makeStyles';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
 const useStyles = makeStyles((theme) => ({
   tab: {
@@ -16,8 +19,6 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
   },
 }));
-
-
 
 const MainNav = (props) => {
   const { pages } = props;

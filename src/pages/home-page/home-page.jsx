@@ -1,9 +1,10 @@
 import React from 'react';
-import Grid from "@material-ui/core/Grid";
 import styled from 'styled-components';
 
+import Grid from "@material-ui/core/Grid";
+
 import top100img from './top100.jpg';
-import AlbumList from "../../components/molecules/album-list/album-list";
+import { AlbumList } from "@/components/";
 
 const Image = styled.img`
   display:inline-block;

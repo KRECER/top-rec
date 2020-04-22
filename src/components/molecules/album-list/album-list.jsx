@@ -1,30 +1,21 @@
 import React, {useEffect} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import styled from 'styled-components';
 
-import { AppTable } from "../../";
-import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
-import {useDispatch, useSelector} from "react-redux";
-import {getTopAlbums} from "../../../redux/selectors";
-import {Operation} from "../../../redux/reducer";
-import Checkbox from "@material-ui/core/Checkbox";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import {ReactSVG} from "react-svg";
+import TableRow from "@material-ui/core/TableRow";
+import Checkbox from "@material-ui/core/Checkbox";
+import TableCell from "@material-ui/core/TableCell";
+
+import { getTopAlbums } from "@/redux/selectors";
+import { Operations } from "@/redux/reducers/albums";
+
 import iconLike from './icon-like.svg';
 import iconLikeChecked from './icon-like-checked.svg';
-import {AppSpinner} from "../../atoms/app-spinner/app-spinner";
 
-export const EnhancedReactSVG = styled(ReactSVG)`
-	display: flex;
-	align-items: center;
-  justify-content:center;
-	div {
-		height: fit-content;
-		display: flex;
-		align-items: center;
-	}
-    ${({ cursor }) => cursor && `cursor:pointer;`}
-`;
+import { EnhancedReactSVG} from "@/components/styled-components/";
+import { AppSpinner } from "@/components";
+import { AppTable } from "@/components/";
 
 const columns = [
   { id: 'img', label: '', padding: 'checkbox' },
@@ -85,9 +76,7 @@ const AlbumList = () => {
   const classes = useStyles();
 
   useEffect(() => {
-      if (!albums) {
-        dispatch(Operation.fetchTopAlbums());
-      }
+      dispatch(Operations.fetchTopAlbums());
   }, [dispatch]);
 
   const renderRow = () => {
@@ -105,7 +94,7 @@ const AlbumList = () => {
           </Link>
         </CustomTableCell>
         <CustomTableCell>
-          <Link href={it.albumLink} target="_blank">
+          <Link href={it.artistLink} target="_blank">
             {it.artist}
           </Link>
         </CustomTableCell>
