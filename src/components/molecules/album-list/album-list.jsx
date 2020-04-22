@@ -66,6 +66,10 @@ const Link = styled.a`
   }
 `;
 
+const Wrap = styled.div`
+  height: 500px;
+`;
+
 const AlbumList = (props) => {
   const { items, isLoading } = props;
   const classes = useStyles();
@@ -78,7 +82,7 @@ const AlbumList = (props) => {
             <Image src={it.img} alt="preview" />
           </Link>
         </CustomTableCell>
-        <CustomTableCell style={{fontSize: '16px', fontWeight: 700}}>{it.num}</CustomTableCell>
+        <CustomTableCell  style={{fontSize: '16px', fontWeight: 700}}>{it.num}</CustomTableCell>
         <CustomTableCell>
           <Link href={it.albumLink} target="_blank">
             {it.title}
@@ -112,7 +116,12 @@ const AlbumList = (props) => {
     ));
   };
 
-  return isLoading ? <AppSpinner size={100} color={'primary'} /> : <AppTable columns={columns} renderRow={renderRow} />;
+  const spinner = <AppSpinner size={100} color={'primary'} />;
+  const table = <AppTable columns={columns} renderRow={renderRow} />;
+
+  return <Wrap>
+    {isLoading ? spinner : table}
+  </Wrap>;
 };
 
 export default AlbumList;

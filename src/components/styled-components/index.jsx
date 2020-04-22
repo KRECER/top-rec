@@ -202,12 +202,14 @@ export const FlexBlock = styled.div`
     ${marginMixin}
     ${MaxHeightMixin}
 `;
+
 export const Container = styled.div`
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+
   @media (max-width: 575.98px) {
     width: 100%;
   }
@@ -226,8 +228,10 @@ export const Container = styled.div`
   @media (min-width: 1200px) {
     max-width: 1140px;
   }
+
   ${paddingMixin}
 `;
+
 export const EnhancedButton = styled(Button)`
 	text-transform: none !important;
 	background-color: #B9C0FF !important;
@@ -247,6 +251,7 @@ export const EnhancedButton = styled(Button)`
 		box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
 	}
 `;
+
 export const FormInput = styled.input`
 background: #ffffff;
 border: 1px solid #e1e4e8;

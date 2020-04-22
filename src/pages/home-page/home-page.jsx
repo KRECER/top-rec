@@ -1,13 +1,17 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import styled from 'styled-components';
+import SimpleBar from "simplebar-react";
 
 import Grid from "@material-ui/core/Grid";
 
 import top100img from './top100.jpg';
 import { AlbumList } from "@/components/";
-import {getTopAlbums, getTopAlbumsPending} from "@/redux/selectors";
+import {getFilteredAlbums, getAlbumsPending} from "@/redux/selectors";
 import { Operations } from "@/redux/reducers/albums";
+import { EnhancedButton, EnhancedReactSVG } from "@/components/styled-components/";
+
+import iconArrowBottom from './icon-arrow-down.svg';
 
 const Image = styled.img`
   display:inline-block;
@@ -29,36 +33,28 @@ const SubTitle = styled.div`
 `;
 
 const Section = styled.section`
-  min-height: 694px;
   padding: 40px;
   border-radius: 14px;
   box-shadow: -16px -16px 40px rgba(255, 255, 255, 0.8), 4px 16px 64px rgba(18, 61, 101, 0.2), inset -8px -6px 80px rgba(255, 255, 255, 0.18);
 `;
 
 const WrapAlbumList = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+`;
 
-  &::after {
-    content: "";
-    position: absolute;
-    z-index: 100;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 125px;
-    background: linear-gradient(180deg, rgba(225, 233, 236, 0) 0%, #E2EAED 100%);
-    pointer-events: none;
-  }
+const LoadMoreBtn = styled(EnhancedButton)`
+  margin-top: auto !important;
 `;
 
 const HomePage = () => {
   const dispatch = useDispatch();
-  const albums = useSelector(getTopAlbums);
-  const pending = useSelector(getTopAlbumsPending);
+  const albums = useSelector(getFilteredAlbums);
+  const pending = useSelector(getAlbumsPending);
 
   useEffect(() => {
-    console.log('home page', 'component did mount');
-    dispatch(Operations.fetchTopAlbums());
+    dispatch(Operations.fetchAlbums());
   }, [dispatch]);
 
   return <Section>
@@ -67,10 +63,13 @@ const HomePage = () => {
         <Image src={top100img} alt="top 100 image" />
       </Grid>
       <Grid item xs={12} md={8}>
-        <Title>Top 100</Title>
-        <SubTitle>iTunes Albums</SubTitle>
         <WrapAlbumList>
-          <AlbumList items={albums} isLoading={pending} />
+          <Title>Top 100</Title>
+          <SubTitle>iTunes Albums</SubTitle>
+          <SimpleBar style={{height: '500px', marginBottom: '50px'}}>
+            <AlbumList items={albums} isLoading={pending} />
+          </SimpleBar>
+          <LoadMoreBtn endIcon={<EnhancedReactSVG src={iconArrowBottom}/>} fullWidth>Показать еще</LoadMoreBtn>
         </WrapAlbumList>
       </Grid>
     </Grid>

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SimpleBar from 'simplebar-react';
 import './app-table.css';
 
 import Table from '@material-ui/core/Table';
@@ -28,9 +27,6 @@ const useStyles = makeStyles((theme) => ({
     color: '#70808F',
     backgroundColor:  '#E1E9EC'
   },
-  simpleBar: {
-    maxHeight: '500px',
-  },
 }));
 
 const AppTable = (props) => {
@@ -51,16 +47,14 @@ const AppTable = (props) => {
     )));
 
     return (
-      <SimpleBar className={classes.simpleBar}>
-        <Table stickyHeader className={classes.table}>
-          <TableHead className={classes.head}>
-            <TableRow classes={{ root: classes.root }}>
-              {renderColumns()}
-            </TableRow>
-          </TableHead>
-          <TableBody>{renderRow()}</TableBody>
-        </Table>
-      </SimpleBar>
+      <Table stickyHeader className={classes.table}>
+        <TableHead className={classes.head}>
+          <TableRow classes={{ root: classes.root }}>
+            {renderColumns()}
+          </TableRow>
+        </TableHead>
+        <TableBody>{renderRow()}</TableBody>
+      </Table>
     );
 };
 

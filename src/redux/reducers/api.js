@@ -1,5 +1,5 @@
 const initialState = {
-  'GET_TOP_ALBUMS': {pending: true},
+  'GET_ALBUMS': {pending: true},
 };
 
 const api = (state = initialState, action) => {

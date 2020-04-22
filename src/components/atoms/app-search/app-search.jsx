@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import FormControl from '@material-ui/core/FormControl';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -32,7 +33,8 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const AppSearch = () => {
+const AppSearch = (props) => {
+  const { onChange } = props;
   const classes = useStyles();
 
   return (
@@ -44,10 +46,19 @@ const AppSearch = () => {
             <EnhancedReactSVG src={searchIcon} />
           </InputAdornment>
         )}
+        onChange={onChange}
       />
     </FormControl>
   );
 
+};
+
+AppSearch.propTypes = {
+  onChange: PropTypes.func.isRequired,
+};
+
+AppSearch.defaultProps = {
+  onChange: () => {},
 };
 
 export default AppSearch;

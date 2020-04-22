@@ -8,6 +8,8 @@ import {IconDonation, IconSurface} from "@/components/atoms/app-icon/app-icon.js
 import { AppSearch } from "@/components/";
 
 import logo from './logo.svg';
+import { useDispatch } from "react-redux";
+import { ActionCreators } from "@/redux/reducers/albums";
 
 const useStyles = makeStyles((theme) => ({
   wrapper: {
@@ -44,13 +46,18 @@ const pages = [
 
 const AppHeader = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const handleSearchChange = (evt) => {
+    dispatch(ActionCreators.search(evt.target.value));
+  };
 
   return (
     <div className={classes.wrapper}>
       <AppBar className={classes.container} position="sticky">
         <img src={logo} className={classes.logo} alt="logo" />
         <MainNav pages={pages} />
-        <AppSearch />
+        <AppSearch onChange={handleSearchChange} />
       </AppBar>
     </div>
   );
